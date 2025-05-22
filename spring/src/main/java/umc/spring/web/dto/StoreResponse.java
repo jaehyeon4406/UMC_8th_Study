@@ -1,13 +1,26 @@
 package umc.spring.web.dto;
 
-import lombok.AllArgsConstructor;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 @Getter
-@AllArgsConstructor
+@Builder                    // ✅ builder() 메서드 생성
 public class StoreResponse {
-    private Long id;
-    private String name;
-    private String address;
-    private String regionName;
+
+    @Schema(example = "12")
+    private final Long storeId;
+
+    @Schema(example = "만나분식")
+    private final String name;
+
+    @Schema(example = "서울특별시 성동구 왕십리로")
+    private final String address;
+
+    @Schema(example = "3")
+    private final Long regionId;
+
+    private final LocalDateTime createdAt;
 }

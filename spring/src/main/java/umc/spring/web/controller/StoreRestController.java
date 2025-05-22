@@ -2,8 +2,8 @@ package umc.spring.web.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import umc.spring.apiPayload.ApiResponse;           // ✅ 추가
 import umc.spring.service.StoreService.StoreCommandService;
 import umc.spring.web.dto.StoreRequest;
 import umc.spring.web.dto.StoreResponse;
@@ -16,11 +16,11 @@ public class StoreRestController {
     private final StoreCommandService storeCommandService;
 
     @PostMapping("/{regionId}/stores")
-    public ResponseEntity<StoreResponse> createStore(
-            @PathVariable Long regionId,
-            @RequestBody @Valid StoreRequest request
-    ) {
+    public ApiResponse<StoreResponse> createStore(           // ✅ 반환형 변경
+                                                             @PathVariable Long regionId,
+                                                             @RequestBody @Valid StoreRequest request) {
+
         StoreResponse response = storeCommandService.createStore(regionId, request);
-        return ResponseEntity.ok(response);
+        return ApiResponse.onSuccess(response);              // ✅ 래핑
     }
 }

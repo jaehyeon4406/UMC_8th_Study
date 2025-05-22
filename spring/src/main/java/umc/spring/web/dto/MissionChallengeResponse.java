@@ -1,12 +1,17 @@
 package umc.spring.web.dto;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import umc.spring.domain.enums.MissionStatus;
+
+import java.time.LocalDateTime;
 
 @Getter
-@AllArgsConstructor
+@Builder
 public class MissionChallengeResponse {
-    private Long id;
-    private String missionSpec;
-    private String status;
+    private Long challengeId;
+    private Long memberId;
+    private Long missionId;
+    private MissionStatus status;
+    private LocalDateTime createdAt;
 }

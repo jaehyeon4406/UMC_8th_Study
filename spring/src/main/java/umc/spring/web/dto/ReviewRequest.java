@@ -16,5 +16,5 @@ public class ReviewRequest {
     private String content;
 
     @NotNull
-    private Float score;
+    private Float rating;
 }

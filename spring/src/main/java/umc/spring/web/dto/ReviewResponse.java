@@ -1,13 +1,29 @@
 package umc.spring.web.dto;
 
-import lombok.AllArgsConstructor;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+
 @Getter
-@AllArgsConstructor
+@Builder                  // ✅ builder() 메서드 생성
 public class ReviewResponse {
-    private Long id;
-    private String content;
-    private float score;
-    private String storeName;
+
+    @Schema(example = "15")
+    private final Long reviewId;
+
+    @Schema(example = "7")
+    private final Long memberId;
+
+    @Schema(example = "5")
+    private final Long storeId;
+
+    @Schema(example = "4.5")
+    private final Double rating;
+
+    @Schema(example = "또 방문하고 싶어요!")
+    private final String content;
+
+    private final LocalDateTime createdAt;
 }

@@ -1,7 +1,9 @@
 package umc.spring.apiPayload.exception.handler;
 
+import lombok.Getter;
 import umc.spring.apiPayload.code.status.ErrorStatus;
 
+@Getter
 public class FoodCategoryHandler extends RuntimeException {
 
     private final ErrorStatus errorStatus;
@@ -11,8 +13,5 @@ public class FoodCategoryHandler extends RuntimeException {
         this.errorStatus = errorStatus;
     }
 
-    public ErrorStatus getErrorStatus() {
-        return errorStatus;
-    }
 }
 
